@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Be My Valentine?</title>
+    <style>
+        body {
+            
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            text-align: center;
+            background-color: #f9f5f6; /* Gentle pink background */
+            margin: 0;
+            padding: 0;
+        }
+        #container {
+            max-width: 600px;
+            margin: 50px auto;
+            padding: 20px;
+            background-color: #ffffff;
+            border-radius: 8px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            color: #ff6b6b;
+            font-size: 36px;
+            margin-bottom: 20px;
+            font-family: 'Pacifico', cursive; /* Stylish font */
+        }
+        p {
+            color: #555;
+            font-size: 18px;
+            line-height: 1.6;
+            margin-bottom: 10px;
+        }
+        button {
+            background-color: #ff6b6b;
+            color: #fff;
+            border: none;
+            padding: 12px 24px;
+            font-size: 16px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            margin-right: 10px;
+        }
+        button:hover {
+            background-color: #ff4f4f;
+        }
+        #response {
+            display: none;
+            margin-top: 30px;
+            font-weight: bold;
+            color: #333;
+            font-size: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div id="container">
+        <h1>Will You Be My Valentine?</h1>
+        <div id="message">
+            <p>My Dearest [Girlfriend's Name],</p>
+            <p>On this most romantic of days, my heart swells with love for you...</p>
+            <p>Will you do me the extraordinary honor of being my Valentine?</p>
+            <form id="responseForm">
+                <button type="submit" id="acceptButton">Yes, with all my heart!</button>
+                <button type="button" id="rejectButton">I'm sorry, my love...</button>
+            </form>
+        </div>
+        <div id="response"></div>
+    </div>
+
+    <script>
+        document.getElementById("responseForm").addEventListener("submit", function(event) {
+            event.preventDefault();
+            document.getElementById("response").textContent = "Oh, my love! Your acceptance fills my soul with joy! 💖";
+            document.getElementById("response").style.display = "block";
+            // Send a request to your server indicating that the button was clicked
+            // You need to implement the server-side logic to handle this request
+            // For demonstration purposes, I'm just logging a message to the console
+            console.log("Your girlfriend accepted your proposal!");
+        });
+
+        document.getElementById("rejectButton").addEventListener("click", function(event) {
+            document.getElementById("response").textContent = "My heart breaks, but I understand. Let us cherish our love nonetheless. 💔";
+            document.getElementById("response").style.display = "block";
+            // Increase the size of the acceptance button continuously
+            var acceptButton = document.getElementById("acceptButton");
+            var currentPadding = acceptButton.style.padding.split(" ");
+            var topPadding = parseInt(currentPadding[0]);
+            var leftRightPadding = parseInt(currentPadding[1]);
+            acceptButton.style.padding = (topPadding + 5) + "px " + (leftRightPadding + 5) + "px";
+            // Log the rejection to the console
+            console.log("Your girlfriend rejected your proposal.");
+        });
+    </script>
+</body>
+</html>
